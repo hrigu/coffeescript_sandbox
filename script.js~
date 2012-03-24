@@ -1,0 +1,3 @@
+window.onload = function () {
+    alert(mylib.myFunc(1, 2));
+}

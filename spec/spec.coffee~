@@ -1,0 +1,47 @@
+describe "major", ->
+	it "has a 'ti'", -> 
+		expect( mylib.major[3]).toBe "ti"
+
+describe "my function 'sum'", ->
+	it "can compute the sum of two numbers correctly", ->
+		expect( mylib.my_func(1, 2)).toBe 3
+	it "can handle negative numbers", ->
+		expect( mylib.my_func(-1, -2)).toBe -3
+		
+		
+describe "functional programming", ->
+	describe "The increment function", ->
+		it "can call the parameter as a function and increment the result", ->			
+			expect( mylib.increment(-> 1 + 2)).toBe 4 
+			
+	describe "my foreach function", ->	
+		sum = (numbers) ->
+			total = 0
+			mylib.foreach(numbers, (i) ->
+				total += i)
+			total
+			
+		it "can iterate over an array an call the given function with each member", ->
+			expect( sum([1, 2])).toBe 3
+		it "returns itself an array", ->
+			func = (i) -> i + i 
+			expect( mylib.foreach( [1, 2] , func)).toEqual [2, 4] 
+				
+
+describe "An object of type 'Animal'", ->
+	name = "Simson"
+	animal = null
+	beforeEach ->
+		animal = new mylib.Animal(name)
+	it "is an instance of Animal", -> expect(animal instanceof mylib.Animal).toBeTruthy 
+	it "is called #{name}", -> expect(animal.name).toBe name
+
+		
+describe "An object of type 'Lion'", ->
+	lion = null
+	beforeEach ->
+		lion = new mylib.Lion("Abraham")
+	it "is an instance of Lion", -> expect(lion instanceof mylib.Lion).toBeTruthy 
+	it "is an instance of Animal", -> expect(lion instanceof mylib.Animal).toBeTruthy 
+	it "is called 'Abraham'", -> expect(lion.name).toBe "Abraham"
+	it "can talk", -> expect(lion.talk()).toBe "wrooahh!"

@@ -1,0 +1,21 @@
+(function() {
+  var Animal, mylib;
+
+  mylib = {
+    my_func: function(a, b) {
+      return a + b;
+    }
+  };
+
+  Animal = (function() {
+
+    function Animal(name) {
+      this.name = name;
+      alert("wrrrough!");
+    }
+
+    return Animal;
+
+  })();
+
+}).call(this);
